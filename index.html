@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="jquery.js"></script>
+    <style media="screen">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            letter-spacing: 1px;
+            font-family: Verdana;
+            text-transform: capitalize;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff0 50%, #333 50%);
+        }
+
+        .container {
+            height: 450px;
+            width: 330px;
+            background: #fff;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            overflow-y: auto;
+        }
+
+        #input {
+            height: 50px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background: #666;
+            color: #fff;
+            padding: 0 10px;
+            margin: 15px 0;
+        }
+
+        #input::placeholder {
+            color: #bbb;
+            ;
+        }
+
+        ul li {
+            background: #eee;
+            color: #333;
+            height: 40px;
+            border-radius: 50px;
+            margin: 10px 0;
+            padding: 10px;
+            position: relative;
+        }
+
+        ul .fa-check,
+        .fa-trash {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        ul .fa-check {
+            color: green;
+            right: 40px;
+        }
+
+        ul .fa-trash {
+            color: #ff0033;
+            right: 15px;
+        }
+
+        .styled {
+            background-color: lightgreen;
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <input type="text" id="input" placeholder="Enter a Task to do">
+        <ul></ul>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#input").change(function () {
+                var input = $(this).val();
+                $('ul').append('<li>' + input + '<i class = "fas fa-check"> </i>  <i class = "fas fa-trash"></i> </li>');
+                $(this).val('');
+            })
+            $('ul').on('click', '.fa-check', function () {
+                $(this).closest('li').toggleClass('styled');
+            })
+            $('ul').on('click', '.fa-trash', function () {
+                // $(this).closest('li').css("background-color", "red");
+                $(this).closest('li').fadeOut(200);
+            })
+        })
+    </script>
+
+</body>
+
+</html>
